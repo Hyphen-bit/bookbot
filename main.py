@@ -14,7 +14,7 @@ def display_alph_chars(LISTODIC):
 def main():
     #get filepath from sys.argv list and feed into filepath if no argument supplied, report error message.
     if len(sys.argv) < 2:
-        print("ERROR - Please specifiy file path e.g. /books/frankenstein.txt")
+        print("Usage: python3 main.py <path_to_book>")
         sys.exit(1)
     else:
         filepath = sys.argv[1]
