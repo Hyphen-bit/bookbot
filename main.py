@@ -1,3 +1,5 @@
+import sys
+
 def get_book_text(filepath):
     with open(filepath) as f:
         file_contents = f.read()
@@ -10,20 +12,24 @@ def display_alph_chars(LISTODIC):
 
 
 def main():
-    filepath = "books/frankenstein.txt"
-    from stats import words_in_book
-    num_words = words_in_book(get_book_text(filepath))
-    from stats import character_occ
-    charcount = character_occ(get_book_text(filepath))
-    from stats import dict_lists
-    print(dict_lists(charcount))
-    print("============ BOOKBOT ============")
-    print(f"Analyzing book found at {filepath}...")
-    print("----------- Word Count ----------")
-    print(f"Found {num_words} total words")
-    print("--------- Character Count -------")
-    display_alph_chars(dict_lists(charcount))
-    print("============= END ===============")
+    #get filepath from sys.argv list and feed into filepath if no argument supplied, report error message.
+    if len(sys.argv) < 2:
+        print("ERROR - Please specifiy file path e.g. /books/frankenstein.txt")
+        sys.exit(1)
+    else:
+        filepath = sys.argv[1]
+        from stats import words_in_book
+        num_words = words_in_book(get_book_text(filepath))
+        from stats import character_occ
+        charcount = character_occ(get_book_text(filepath))
+        from stats import dict_lists
+        print("============ BOOKBOT ============")
+        print(f"Analyzing book found at {filepath}...")
+        print("----------- Word Count ----------")
+        print(f"Found {num_words} total words")
+        print("--------- Character Count -------")
+        display_alph_chars(dict_lists(charcount))
+        print("============= END ===============")
     
 
 
